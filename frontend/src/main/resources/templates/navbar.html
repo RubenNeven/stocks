@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{~/css/bootstrap.css}">
+    <link rel="stylesheet" href="../static/css/sales/crm.css" th:href="@{~/css/sales/crm.css}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Navbar</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg" th:fragment="navbar">
+    <a class="navbar-brand" href="#">
+        <img src="../static/images/Younify-logo.JPG" th:src="@{/images/Younify-logo.JPG}">
+    </a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item mx-1">
+                <a class="nav-link" href="#">Data management</a>
+            </li>
+            <li class="nav-item mx-1">
+                <a class="nav-link" href="#">Organigram</a>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle mx-1" href="#" id="salesDropdown" role="button" data-toggle="dropdown">
+                    Sales
+                </a>
+                <div class="dropdown-menu" aria-labelledby="salesDropdown">
+                    <a class="dropdown-item" href="sales/crmForm.html" th:href="@{/sales/crm}">CRM</a>
+                    <a class="dropdown-item" href="sales/offerteForm.html" th:href="@{/sales/offerte}">Offerte</a>
+                    <a class="dropdown-item" href="sales/orderForm.html" th:href="@{/sales/order}">Orders</a>
+                    <a class="dropdown-item" href="sales/marketingForm.html" th:href="@{/sales/marketing}">Marketing</a>
+                    <a class="dropdown-item" href="sales/webshopForm.html" th:href="@{/sales/webshop}">Webshop</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mx-1" href="#" id="productionDropdown" role="button" data-toggle="dropdown">
+                    Productie
+                </a>
+                <div class="dropdown-menu" aria-labelledby="productionDropdown">
+                    <a class="dropdown-item" href="#">Planning</a>
+                    <a class="dropdown-item" href="#">Werkuren</a>
+                    <a class="dropdown-item" href="#">Materieel</a>
+                    <a class="dropdown-item" href="#">Kwaliteit</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle mx-1" href="#" id="logistiekDropdown" role="button" data-toggle="dropdown">
+                    Logistiek
+                </a>
+                <div class="dropdown-menu" aria-labelledby="logistiekDropdown">
+                    <a class="dropdown-item" href="#">Inkoop</a>
+                    <a class="dropdown-item" href="#">Voorraad</a>
+                    <a class="dropdown-item" href="#">Forecasting</a>
+                    <a class="dropdown-item" href="#">Scanning</a>
+                    <a class="dropdown-item" href="#">Documenten</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
