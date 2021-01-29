@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create stock</title>
+
+    <link type="text/css" href="../static/css/addStock.css" th:href="@{/css/addStock.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+</head>
+
+
+<body>
+<form name="stockForm">
+    <div id="add_stock">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+                <h3 style="text-align: center" id="stock_title">Add Stock</h3>
+            </div>
+
+            <div id="sector_and_market" class="mdl-grid">
+
+                <div id="stock_name" class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+                        <input class="mdl-textfield__input" type="text" id="name">
+                        <label class="mdl-textfield__label">Stock name</label>
+                    </div>
+                </div>
+
+                <div id="sector" class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                        <input type="text" value="" class="mdl-textfield__input" id="stock_sector" readonly>
+                        <input type="hidden" value="" name="stock_sector">
+                        <label for="stock_sector" class="mdl-textfield__label">Sector</label>
+                        <!--/*@thymesVar id="sectorList" type="com.ruben.stocks.model.Stock"*/-->
+                        <select id="sectors" onchange="selectDropDown()" for="stock_sector"
+                            class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                <option class="mdl-menu__item">Healthcare</option>
+                                <option class="mdl-menu__item">Technology</option>
+                                <option class="mdl-menu__item">Energy</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="market" class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                        <input type="text" value="" class="mdl-textfield__input" id="stock_market" readonly>
+                        <input type="hidden" value="" name="stock_market">
+                        <label for="stock_market" class="mdl-textfield__label">Stock market</label>
+                        <ul for="stock_market" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                            <li class="mdl-menu__item" data-val="Euronext Amsterdam Stock Exchange">Euronext Amsterdam
+                                Stock Exchange
+                            </li>
+                            <li class="mdl-menu__item" data-val="London Stock Exchange">London Stock Exchange</li>
+                            <li class="mdl-menu__item" data-val="NASDAQ">NASDAQ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="price" class="mdl-grid">
+                <div id="average_purchase_price" class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="number" step="0.01" id="app"
+                               onchange="calculateTotalPrice()">
+                        <label class="mdl-textfield__label">Average Purchase Price €</label>
+                    </div>
+                </div>
+                <div id="stock_quantity" class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="number" id="quantity"
+                               onchange="calculateTotalPrice()">
+                        <label class="mdl-textfield__label">Quantity</label>
+                    </div>
+                </div>
+                <div id="total_purchase_price" class="mdl-cell mdl-cell--4-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="number" id="totalPrice" readonly>
+                        <label class="mdl-textfield__label">Total purchase price</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="buttons" class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+                <button style="float: right;" id="cancelStock"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                    Cancel
+                </button>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+                <button id="addStock"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                    Add
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</form>
+
+</div>
+
+<script>
+
+
+    function calculateTotalPrice() {
+        var app = document.getElementById("app").value;
+        var quantity = document.getElementById("quantity").value;
+        var totalPrice = (app * quantity);
+        document.getElementById("totalPrice").value = totalPrice;
+    }
+</script>
+
+</body>
+</html>
